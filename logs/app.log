@@ -1,0 +1,230 @@
+LOG: 2025/06/26 18:24:53.780853 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/26 18:24:53.814335 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/26 18:29:40.618311 Started POST /user/reg
+LOG: 2025/06/26 18:29:40.618311 Send request to check email - loxanik229@mail.ru
+LOG: 2025/06/26 18:29:40.619685 Response to check email - false
+LOG: 2025/06/26 18:29:40.619685 Send request to check login - loginwithanal
+LOG: 2025/06/26 18:29:40.619685 Response to check login - false
+LOG: 2025/06/26 18:29:40.664169 Succesful create user: loginwithanal
+LOG: 2025/06/26 18:29:42.289248 Send confirm message to email loxanik229@mail.ru
+LOG: 2025/06/26 18:29:42.289248 Completed POST /user/reg
+LOG: 2025/06/26 18:30:53.839601 Started POST /user/reg/confirm-email
+LOG: 2025/06/26 18:30:53.840613 Succesful confirmation user: loxanik229@mail.ru
+LOG: 2025/06/26 18:30:53.840613 Completed POST /user/reg/confirm-email
+LOG: 2025/06/26 18:33:35.443401 Started POST /user/reg/confirm-email
+LOG: 2025/06/26 18:33:35.444035 Can't confrim email, no rows in DB
+LOG: 2025/06/26 18:33:35.444035 Completed POST /user/reg/confirm-email
+LOG: 2025/06/26 20:03:49.589668 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/26 20:03:49.622391 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/26 20:05:56.189088 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/06/26 20:06:00.282420 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/06/26 20:06:00.282420 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/06/26 20:07:01.308301 Started POST /user/reg/confirm-email
+LOG: 2025/06/26 20:07:01.308884 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/06/26 20:07:01.308884 Completed POST /user/reg/confirm-email
+LOG: 2025/06/26 22:31:11.405140 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/26 22:31:11.457716 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/26 22:32:22.335634 Started POST /user/reg
+LOG: 2025/06/26 22:32:22.335634 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/06/26 22:32:22.338656 Response to check email - false
+LOG: 2025/06/26 22:32:22.338656 Send request to check login - sanyuchek
+LOG: 2025/06/26 22:32:22.338656 Response to check login - false
+LOG: 2025/06/26 22:32:22.385360 Succesful create user: sanyuchek
+LOG: 2025/06/26 22:32:24.111716 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/06/26 22:32:24.111716 Completed POST /user/reg
+LOG: 2025/06/26 22:32:40.880939 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/06/26 22:32:43.576749 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/06/26 22:32:43.576749 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/06/26 22:33:14.200052 Started POST /user/reg/confirm-email
+LOG: 2025/06/26 22:33:14.201476 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/06/26 22:33:14.201476 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 19:42:30.867579 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 19:42:30.913718 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 19:43:49.518662 Started POST /user/reg
+LOG: 2025/06/27 19:43:49.518662 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 19:43:49.523748 Response to check email - false
+LOG: 2025/06/27 19:43:49.523748 Send request to check login - viviass
+LOG: 2025/06/27 19:43:49.523748 Response to check login - false
+LOG: 2025/06/27 19:43:49.570226 Succesful create user: viviass
+LOG: 2025/06/27 19:43:51.222593 Send confirm message to email 89605866084viktoria@gmail.com
+LOG: 2025/06/27 19:43:51.222593 Completed POST /user/reg
+LOG: 2025/06/27 19:44:46.507229 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 19:44:46.508980 Succesful confirmation user: 89605866084viktoria@gmail.com
+LOG: 2025/06/27 19:44:46.508980 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 19:45:28.637025 Started POST /user/reg
+LOG: 2025/06/27 19:45:28.637025 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 19:45:28.637025 Response to check email - true
+LOG: 2025/06/27 19:45:28.637025 Send request to check login - viviass
+LOG: 2025/06/27 19:45:28.637025 Response to check login - true
+LOG: 2025/06/27 19:45:28.637528 Completed POST /user/reg
+LOG: 2025/06/27 20:06:16.950512 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 20:06:16.981306 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 20:06:18.348288 Started POST /user/reg
+LOG: 2025/06/27 20:06:18.348288 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:06:18.350045 Response to check email - true
+LOG: 2025/06/27 20:06:18.350045 Send request to check login - viviass
+LOG: 2025/06/27 20:06:18.350045 Response to check login - true
+LOG: 2025/06/27 20:06:18.350045 Completed POST /user/reg
+LOG: 2025/06/27 20:06:33.681087 Started POST /user/reg
+LOG: 2025/06/27 20:06:33.681087 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:06:33.681087 Response to check email - false
+LOG: 2025/06/27 20:06:33.681087 Send request to check login - viviass
+LOG: 2025/06/27 20:06:33.681591 Response to check login - false
+LOG: 2025/06/27 20:06:33.681591 Field validation error: Key: 'User.UserCode.EmailConfirmationPasswordCode' Error:Field validation for 'EmailConfirmationPasswordCode' failed on the 'len' tag
+LOG: 2025/06/27 20:06:33.681591 Completed POST /user/reg
+LOG: 2025/06/27 20:08:00.234130 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 20:08:00.266906 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 20:08:00.752028 Started POST /user/reg
+LOG: 2025/06/27 20:08:00.752028 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:08:00.754111 Response to check email - false
+LOG: 2025/06/27 20:08:00.754111 Send request to check login - viviass
+LOG: 2025/06/27 20:08:00.754111 Response to check login - false
+LOG: 2025/06/27 20:08:00.798288 Bad request to DB: pq: значение NULL в столбце "email_сonfirmation_сode" отношения "User" нарушает ограничение NOT NULL
+LOG: 2025/06/27 20:08:00.798288 Completed POST /user/reg
+LOG: 2025/06/27 20:08:35.296063 Started POST /user/reg
+LOG: 2025/06/27 20:08:35.296063 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:08:35.296891 Response to check email - false
+LOG: 2025/06/27 20:08:35.296891 Send request to check login - viviass
+LOG: 2025/06/27 20:08:35.296891 Response to check login - false
+LOG: 2025/06/27 20:08:35.341458 Succesful create user: viviass
+LOG: 2025/06/27 20:08:37.271199 Send confirm message to email 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:08:37.271199 Completed POST /user/reg
+LOG: 2025/06/27 20:27:49.551849 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 20:27:49.584170 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 20:27:55.397989 Started POST /user/reg
+LOG: 2025/06/27 20:27:55.397989 Send request to check email - 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:27:55.400161 Response to check email - false
+LOG: 2025/06/27 20:27:55.400161 Send request to check login - viviass
+LOG: 2025/06/27 20:27:55.400161 Response to check login - false
+LOG: 2025/06/27 20:27:55.446200 Succesful create user: viviass
+LOG: 2025/06/27 20:27:56.916509 Send confirm message to email 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:27:56.916509 Completed POST /user/reg
+LOG: 2025/06/27 20:28:15.853383 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 20:28:15.855266 Bad request to DB: pq: столбец "email_confirmation_code" не существует
+LOG: 2025/06/27 20:28:15.855266 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 20:28:45.276196 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 20:28:45.308852 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 20:28:48.497430 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 20:28:48.499944 Bad request to DB: pq: столбец "email_confirmation_code" не существует
+LOG: 2025/06/27 20:28:48.499944 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 20:29:57.987972 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 20:29:58.019654 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 20:29:58.726650 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 20:29:58.729967 Succesful confirmation user: 89605866084viktoria@gmail.com
+LOG: 2025/06/27 20:29:58.729967 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 21:48:22.100903 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 21:48:22.153207 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 21:48:22.345143 Started POST /user/reg
+LOG: 2025/06/27 21:48:22.345647 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/06/27 21:48:22.365840 Response to check email - false
+LOG: 2025/06/27 21:48:22.365840 Send request to check login - vivsiass
+LOG: 2025/06/27 21:48:22.365840 Response to check login - false
+LOG: 2025/06/27 21:48:22.417156 Succesful create user: vivsiass
+LOG: 2025/06/27 21:48:24.055784 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/06/27 21:48:24.055784 Completed POST /user/reg
+LOG: 2025/06/27 21:48:57.410788 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 21:48:57.415838 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/06/27 21:48:57.415838 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 22:08:11.062895 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:08:11.111792 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:09:51.092096 Started POST /user/reg
+LOG: 2025/06/27 22:09:51.092096 Send request to check email - loxanik229@mail.ru
+LOG: 2025/06/27 22:09:51.093887 Response to check email - false
+LOG: 2025/06/27 22:09:51.093887 Send request to check login - sosaldvaraza
+LOG: 2025/06/27 22:09:51.093887 Response to check login - false
+LOG: 2025/06/27 22:09:51.139241 Succesful create user: sosaldvaraza
+LOG: 2025/06/27 22:09:52.757166 Send confirm message to email loxanik229@mail.ru
+LOG: 2025/06/27 22:09:52.757166 Completed POST /user/reg
+LOG: 2025/06/27 22:10:25.496155 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 22:10:25.496155 Key: 'UserConfirm.EmailConfirmationCode' Error:Field validation for 'EmailConfirmationCode' failed on the 'len' tag
+LOG: 2025/06/27 22:10:25.496155 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 22:10:35.582376 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 22:10:35.583212 Can't confrim email, no rows in DB
+LOG: 2025/06/27 22:10:35.583212 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 22:10:42.582648 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 22:10:42.583211 Succesful confirmation user: loxanik229@mail.ru
+LOG: 2025/06/27 22:10:42.583211 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 22:11:09.429613 Started POST /user/reg
+LOG: 2025/06/27 22:11:09.429613 Send request to check email - loxanik229@mail.ru
+LOG: 2025/06/27 22:11:09.429613 Response to check email - false
+LOG: 2025/06/27 22:11:09.429613 Send request to check login - sosaldvaraza
+LOG: 2025/06/27 22:11:09.430201 Response to check login - false
+LOG: 2025/06/27 22:11:09.474490 Succesful create user: sosaldvaraza
+LOG: 2025/06/27 22:11:11.989261 Send confirm message to email loxanik229@mail.ru
+LOG: 2025/06/27 22:11:11.989261 Completed POST /user/reg
+LOG: 2025/06/27 22:12:24.978961 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/06/27 22:12:28.771744 Send confirm message to email loxanik229@mail.ru
+LOG: 2025/06/27 22:12:28.771744 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/06/27 22:12:46.308405 Started POST /user/reg/confirm-email
+LOG: 2025/06/27 22:12:46.308909 Succesful confirmation user: loxanik229@mail.ru
+LOG: 2025/06/27 22:12:46.308909 Completed POST /user/reg/confirm-email
+LOG: 2025/06/27 22:15:38.915316 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:15:38.946890 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:27:13.411451 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:27:13.442565 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:32:56.795797 Started OPTIONS /user/reg
+LOG: 2025/06/27 22:32:56.795797 Not allowed method: OPTIONS
+LOG: 2025/06/27 22:32:56.795797 Completed OPTIONS /user/reg
+LOG: 2025/06/27 22:32:59.768175 Started OPTIONS /user/reg
+LOG: 2025/06/27 22:32:59.768175 Not allowed method: OPTIONS
+LOG: 2025/06/27 22:32:59.768175 Completed OPTIONS /user/reg
+LOG: 2025/06/27 22:33:59.031246 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:33:59.165295 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:34:03.789471 Started POST /user/reg
+LOG: 2025/06/27 22:34:03.789471 Send request to check email - 1@gmail.com
+LOG: 2025/06/27 22:34:03.791099 Response to check email - false
+LOG: 2025/06/27 22:34:03.791099 Send request to check login - 11
+LOG: 2025/06/27 22:34:03.791099 Response to check login - false
+LOG: 2025/06/27 22:34:03.791099 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/06/27 22:34:03.791099 Completed POST /user/reg
+LOG: 2025/06/27 22:34:30.446120 Started POST /user/reg
+LOG: 2025/06/27 22:34:30.446120 Send request to check email - 1@gmail.com
+LOG: 2025/06/27 22:34:30.446120 Response to check email - false
+LOG: 2025/06/27 22:34:30.446120 Send request to check login - Loxanik
+LOG: 2025/06/27 22:34:30.446120 Response to check login - false
+LOG: 2025/06/27 22:34:30.494264 Succesful create user: Loxanik
+LOG: 2025/06/27 22:34:32.627771 Send confirm message to email 1@gmail.com
+LOG: 2025/06/27 22:34:32.627771 Completed POST /user/reg
+LOG: 2025/06/27 22:35:46.642281 Started POST /user/reg
+LOG: 2025/06/27 22:35:46.642281 Send request to check email - 122@gmail.com
+LOG: 2025/06/27 22:35:46.642281 Response to check email - false
+LOG: 2025/06/27 22:35:46.642281 Send request to check login - Loxanisk
+LOG: 2025/06/27 22:35:46.642281 Response to check login - false
+LOG: 2025/06/27 22:35:46.686994 Succesful create user: Loxanisk
+LOG: 2025/06/27 22:35:48.085449 Send confirm message to email 122@gmail.com
+LOG: 2025/06/27 22:35:48.085449 Completed POST /user/reg
+LOG: 2025/06/27 22:48:24.280979 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:48:24.314340 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:51:03.022604 Started OPTIONS /user/reg
+LOG: 2025/06/27 22:51:03.022604 Not allowed method: OPTIONS
+LOG: 2025/06/27 22:51:03.022604 Completed OPTIONS /user/reg
+LOG: 2025/06/27 22:51:17.160468 Started OPTIONS /user/reg
+LOG: 2025/06/27 22:51:17.160468 Not allowed method: OPTIONS
+LOG: 2025/06/27 22:51:17.160468 Completed OPTIONS /user/reg
+LOG: 2025/06/27 22:51:54.012871 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:51:54.045451 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:51:57.305055 Started POST /user/reg
+LOG: 2025/06/27 22:51:57.305055 Send request to check email - n1@gmail.com
+LOG: 2025/06/27 22:51:57.306772 Response to check email - false
+LOG: 2025/06/27 22:51:57.306772 Send request to check login - Loxiiiiiii
+LOG: 2025/06/27 22:51:57.306772 Response to check login - false
+LOG: 2025/06/27 22:51:57.306772 Field validation error: Key: 'User.Password' Error:Field validation for 'Password' failed on the 'min' tag
+LOG: 2025/06/27 22:51:57.306772 Completed POST /user/reg
+LOG: 2025/06/27 22:52:18.959226 Started POST /user/reg
+LOG: 2025/06/27 22:52:18.959226 Send request to check email - n1@gmail.com
+LOG: 2025/06/27 22:52:18.959226 Response to check email - false
+LOG: 2025/06/27 22:52:18.959226 Send request to check login - Loxiiiiiii
+LOG: 2025/06/27 22:52:18.959226 Response to check login - false
+LOG: 2025/06/27 22:52:19.005009 Succesful create user: Loxiiiiiii
+LOG: 2025/06/27 22:52:22.784445 Send confirm message to email n1@gmail.com
+LOG: 2025/06/27 22:52:22.784445 Completed POST /user/reg
+LOG: 2025/06/27 22:54:29.181275 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/27 22:54:29.215609 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/27 22:54:56.055296 Started POST /user/reg
+LOG: 2025/06/27 22:54:56.055296 Send request to check email - suchka@gmail.com
+LOG: 2025/06/27 22:54:56.057204 Response to check email - false
+LOG: 2025/06/27 22:54:56.057204 Send request to check login - Gavsuka
+LOG: 2025/06/27 22:54:56.057204 Response to check login - false
+LOG: 2025/06/27 22:54:56.102557 Succesful create user: Gavsuka
+LOG: 2025/06/27 22:54:57.512447 Send confirm message to email suchka@gmail.com
+LOG: 2025/06/27 22:54:57.512447 Completed POST /user/reg

@@ -14,13 +14,13 @@ func SetupRouter() http.Handler{
 	mux := http.NewServeMux()
 
 	//регистрация
-	mux.Handle("/user/reg", LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, RegisterHandler(userRepo))))
+	mux.Handle("/user/reg", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, RegisterHandler(userRepo)))))
 
 	//подтверждение почты
-	mux.Handle("/user/reg/confirm-email", LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, ConfirmEmailHandler(userRepo))))
+	mux.Handle("/user/reg/confirm-email", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, ConfirmEmailHandler(userRepo)))))
 	
 	//отправка нового кода подтверждения пользователя
-	mux.Handle("/user/reg/confirm-email/new-code", LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, SendNewConfirmationCodeHandler(userRepo))))
+	mux.Handle("/user/reg/confirm-email/new-code", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, SendNewConfirmationCodeHandler(userRepo)))))
 
 
 	
