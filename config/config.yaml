@@ -1,0 +1,16 @@
+# config/config.yaml
+env: "local"
+http_server:
+  address: "26.94.236.113:9000"
+  timeout: "5s"
+database:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "2285"
+  dbname: "kanban-desk"
+email_confirm:
+  email_from: "saha67golovlev@gmail.com"
+  password_from: "liyb zsep dlks pbar"
+  smtp_host: "smtp.gmail.com"
+  smtp_port: "587"
