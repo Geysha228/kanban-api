@@ -19,7 +19,7 @@ type UsRepo interface{
 	ConfirmEmail(user models.UserConfirm) (bool, error)
 	GetHashPasswordAndIDAndEmailFromDB(loginEmail string) (user models.UserAutho, err error)
 	CreateNewConfirmationEmailCode(user models.UserConfirm) (err error)
-	GetEmailByLoginOrEmail(loginEmail string) (email string,err error)
+	GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error)
 }
 
 type UserRepository struct {
@@ -126,8 +126,8 @@ func (usRepo *UserRepository) CreateNewConfirmationEmailCode(user models.UserCon
 	return err
 }
 
-func (usRepo *UserRepository) GetEmailByLoginOrEmail(loginEmail string) (email string,err error){
-	query := `SELECT email FROM public."User" WHERE login = $1 OR email = $1`
-	err = usRepo.db.QueryRow(query, loginEmail).Scan(&email)
-	return email, err
+func (usRepo *UserRepository) GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error){
+	query := `SELECT email, id FROM public."User" WHERE login = $1 OR email = $1`
+	err = usRepo.db.QueryRow(query, loginEmail).Scan(&user.Email, &user.ID)
+	return user, err
 }

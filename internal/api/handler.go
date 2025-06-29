@@ -342,7 +342,10 @@ func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 			return
 		}
 
-		email, err := repo.GetEmailByLoginOrEmail(user.LoginEmail)
+
+
+
+		userConf, err := repo.GetEmailAndIDByLoginOrEmail(user.LoginEmail)
 		if err != nil{
 			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
 			w.Header().Set("Content-Type", "application/json")
@@ -352,7 +355,7 @@ func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 			json.NewEncoder(w).Encode(response)
 			return
 		}
-		if email == ""{
+		if userConf.Email == ""{
 			util.LogWrite("Can't find email, no rows in DB")
 			w.Header().Set("Content-Type", "application/json")
 			errors := []models.APIError{{Error: "Can't confrim email", ErrorCode: "3813"},}
@@ -361,6 +364,14 @@ func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 			json.NewEncoder(w).Encode(response)
 			return
 		}
+
+		
+		//Создание кода для подтверждения пароля
+
+		//Занесение в бд кода
+
+		//Отправка нового кода
+
 		//
 	}
 } 
