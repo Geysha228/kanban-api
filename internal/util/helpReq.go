@@ -35,7 +35,7 @@ func CreateEmailMessage(code big.Int, email string, description string) string {
     "MIME-Version: 1.0\r\n" +
     "Content-Type: text/plain; charset=\"UTF-8\"\r\n" +
     "\r\n" + // пустая строка отделяет заголовки от тела письма
-    fmt.Sprintf("Your confirmation code: %v\n", code.String())
+    fmt.Sprintf("Your confirmation code: %v\n", code.String()) +
 	fmt.Sprint("%s", description)
 	return msg
 }
