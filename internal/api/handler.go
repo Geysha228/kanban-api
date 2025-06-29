@@ -140,7 +140,7 @@ func RegisterHandler(repo repository.UsRepo) http.HandlerFunc {
 		
 
 		//Отправление сообщение для подтверждения почты
-		msg := util.CreateEmailMessage(*number, user.Email)
+		msg := util.CreateEmailMessage(*number, user.Email, "This code need to confirm your profile")
 		err = util.SendMail(msg, user.Email)
 		if err != nil {
 			util.LogWrite(fmt.Sprintf("Can't send message to email %v", err))
@@ -304,7 +304,7 @@ func SendNewConfirmationCodeHandler(repo repository.UsRepo)http.HandlerFunc{
 		
 
 		//отправление кода на почту
-		msg := util.CreateEmailMessage(*number, userConf.Email)
+		msg := util.CreateEmailMessage(*number, userConf.Email, "This code need to confirm your profile")
 		err = util.SendMail(msg, userConf.Email)
 		if err != nil {
 			util.LogWrite(fmt.Sprintf("Can't send message to email %v", err))
@@ -395,7 +395,7 @@ func SendNewConfirmationPasswordCodeHandler(repo repository.UsRepo)http.HandlerF
 		}
 
 		//Отправка нового кода
-		msg := util.CreateEmailMessage(*number, userConf.Email)
+		msg := util.CreateEmailMessage(*number, userConf.Email, "This code need to reset your password")
 		err = util.SendMail(msg, userConf.Email)
 		if err != nil {
 			util.LogWrite(fmt.Sprintf("Can't send message to email %v", err))

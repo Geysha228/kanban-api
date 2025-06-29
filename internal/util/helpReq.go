@@ -28,14 +28,15 @@ func SetConfigEmail(){
 	auth = smtp.PlainAuth("", cfgEmail.EmailFrom, cfgEmail.PasswordFrom, cfgEmail.SmtpHost)
 }
 
-func CreateEmailMessage(code big.Int, email string) string {
+func CreateEmailMessage(code big.Int, email string, description string) string {
 	msg := fmt.Sprintf("Subject: %s\r\n", "Confirmation your email in Kanban-desk") +
     fmt.Sprintf("From: %s\r\n", cfgEmail.EmailFrom) +
     fmt.Sprintf("To: %s\r\n", email) +
     "MIME-Version: 1.0\r\n" +
     "Content-Type: text/plain; charset=\"UTF-8\"\r\n" +
     "\r\n" + // пустая строка отделяет заголовки от тела письма
-    fmt.Sprintf("Your confirmation code: %v", code.String())
+    fmt.Sprintf("Your confirmation code: %v\n", code.String())
+	fmt.Sprint("%s", description)
 	return msg
 }
 
