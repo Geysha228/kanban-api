@@ -12,6 +12,10 @@ import (
 	"github.com/go-playground/validator"
 )
 
+type EmailResponse struct {
+	Email string `json:"email"`
+}
+
 func RegisterHandler(repo repository.UsRepo) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		
@@ -316,7 +320,7 @@ func SendNewConfirmationCodeHandler(repo repository.UsRepo)http.HandlerFunc{
 	}
 }
 
-func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
+func SendNewConfirmationPasswordCodeHandler(repo repository.UsRepo)http.HandlerFunc{
 	return func(w http.ResponseWriter, r *http.Request) {
 		//получение json-данных
 		user, err := util.DecodeJSONBody[models.UserOnlyLoginEmail](r)
@@ -330,6 +334,7 @@ func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 			return
         }
 
+		//валидация
 		validate := validator.New()
 		err = validate.Struct(user)
 		if err != nil {
@@ -342,9 +347,7 @@ func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 			return
 		}
 
-
-
-
+		//получение почты пользователя
 		userConf, err := repo.GetEmailAndIDByLoginOrEmail(user.LoginEmail)
 		if err != nil{
 			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
@@ -365,13 +368,59 @@ func ForgotPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 			return
 		}
 
-		
 		//Создание кода для подтверждения пароля
+		number, err := util.CreateEmailCode()
+		if err != nil{
+			util.LogWrite(fmt.Sprintf("Can't create code for email: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Can't create code for email", ErrorCode: "5301"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		userConf.EmailConfirmationCode = number.String()
 
 		//Занесение в бд кода
+		err = repo.CreateNewConfirmationEmailPasswordCode(userConf) 
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
 
 		//Отправка нового кода
-
-		//
+		msg := util.CreateEmailMessage(*number, userConf.Email)
+		err = util.SendMail(msg, userConf.Email)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't send message to email %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't send message to email", ErrorCode: "9856"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		
+		util.LogWrite(fmt.Sprintf("Send confirm password message to email %s", userConf.Email))
+		resp := EmailResponse{Email: userConf.Email}
+		jsonData, err := json.Marshal(resp)
+		if err != nil {
+			util.LogWrite("Can't parse json")
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't parse json", ErrorCode: "3112"},}
+			w.WriteHeader(http.StatusInternalServerError)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		w.Write(jsonData)
 	}
 } 

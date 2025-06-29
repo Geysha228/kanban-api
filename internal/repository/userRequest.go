@@ -20,11 +20,13 @@ type UsRepo interface{
 	GetHashPasswordAndIDAndEmailFromDB(loginEmail string) (user models.UserAutho, err error)
 	CreateNewConfirmationEmailCode(user models.UserConfirm) (err error)
 	GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error)
+	CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error)
 }
 
 type UserRepository struct {
     db *sql.DB
 }
+
 
 func NewUserRepository(db *sql.DB) *UserRepository {
     return &UserRepository{db: db}
@@ -130,4 +132,10 @@ func (usRepo *UserRepository) GetEmailAndIDByLoginOrEmail(loginEmail string) (us
 	query := `SELECT email, id FROM public."User" WHERE login = $1 OR email = $1`
 	err = usRepo.db.QueryRow(query, loginEmail).Scan(&user.Email, &user.ID)
 	return user, err
+}
+
+func (usRepo *UserRepository) CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error){
+	query := `UPDATE public."User_Codes" SET email_confirmation_password_code = $1, expiration_email_confirmation_password_code = $2 WHERE user_id = $3`
+	_, err = usRepo.db.Exec(query, user.EmailConfirmationCode, time.Now().Add(15 * time.Minute) ,user.ID)
+	return err
 }

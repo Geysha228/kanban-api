@@ -228,3 +228,32 @@ LOG: 2025/06/27 22:54:56.057204 Response to check login - false
 LOG: 2025/06/27 22:54:56.102557 Succesful create user: Gavsuka
 LOG: 2025/06/27 22:54:57.512447 Send confirm message to email suchka@gmail.com
 LOG: 2025/06/27 22:54:57.512447 Completed POST /user/reg
+LOG: 2025/06/29 15:58:05.048764 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/29 15:58:05.102195 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/29 15:58:17.499098 Started POST /user/reg
+LOG: 2025/06/29 15:58:17.499098 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/06/29 15:58:17.522431 Response to check email - false
+LOG: 2025/06/29 15:58:17.522431 Send request to check login - vivsiass
+LOG: 2025/06/29 15:58:17.522431 Response to check login - false
+LOG: 2025/06/29 15:58:17.576381 Succesful create user: vivsiass
+LOG: 2025/06/29 15:58:19.099001 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/06/29 15:58:19.099001 Completed POST /user/reg
+LOG: 2025/06/29 15:58:36.147295 Started POST /user/reg/confirm-email
+LOG: 2025/06/29 15:58:36.152048 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/06/29 15:58:36.152048 Completed POST /user/reg/confirm-email
+LOG: 2025/06/29 15:59:46.481267 Started POST /user/autho/forgot-password
+LOG: 2025/06/29 15:59:46.483024 Bad request to DB: pq: столбец "email_сonfirmation_password_сode" в таблице "User_Codes" не существует
+LOG: 2025/06/29 15:59:46.483024 Completed POST /user/autho/forgot-password
+LOG: 2025/06/29 16:00:35.166854 Started POST /user/autho/forgot-password
+LOG: 2025/06/29 16:00:35.167436 Bad request to DB: pq: столбец "email_сonfirmation_password_сode" в таблице "User_Codes" не существует
+LOG: 2025/06/29 16:00:35.167436 Completed POST /user/autho/forgot-password
+LOG: 2025/06/29 16:01:08.066807 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/29 16:01:08.098312 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/29 16:01:10.898761 Started POST /user/autho/forgot-password
+LOG: 2025/06/29 16:01:10.902347 Bad request to DB: pq: столбец "email_сonfirmation_password_сode" в таблице "User_Codes" не существует
+LOG: 2025/06/29 16:01:10.902347 Completed POST /user/autho/forgot-password
+LOG: 2025/06/29 16:02:49.491630 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/06/29 16:02:49.522928 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/06/29 16:02:51.884952 Started POST /user/autho/forgot-password
+LOG: 2025/06/29 16:02:53.200377 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/06/29 16:02:53.200377 Completed POST /user/autho/forgot-password
