@@ -291,3 +291,37 @@ LOG: 2025/07/01 12:26:01.759921 Succesful ping database: 26.94.236.113:9000
 LOG: 2025/07/01 12:26:08.023948 Started POST /user/autho/forgot-password/reset
 LOG: 2025/07/01 12:26:08.070046 Succesfull update password for email: golovlev-2005@mail.ru
 LOG: 2025/07/01 12:26:08.070046 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:48:19.246714 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:48:19.279570 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:48:22.693428 Started POST /user/autho/forgot-password
+LOG: 2025/07/01 12:48:24.338053 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 12:48:24.338053 Completed POST /user/autho/forgot-password
+LOG: 2025/07/01 12:49:01.581094 Started POST /user/autho/forgot-password/code
+LOG: 2025/07/01 12:49:01.582336 Bad request to DB: pq: неоднозначная ссылка на столбец "id"
+LOG: 2025/07/01 12:49:01.582336 Completed POST /user/autho/forgot-password/code
+LOG: 2025/07/01 12:49:53.265675 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:49:53.297640 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:49:55.352430 Started POST /user/autho/forgot-password/code
+LOG: 2025/07/01 12:49:55.354372 Bad request to DB: pq: оператор не существует: character varying > timestamp with time zone
+LOG: 2025/07/01 12:49:55.354372 Completed POST /user/autho/forgot-password/code
+LOG: 2025/07/01 12:50:31.704423 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:50:31.734821 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:50:34.109335 Started POST /user/autho/forgot-password/code
+LOG: 2025/07/01 12:50:34.111194 Succesfull check password code for email: golovlev-2005@mail.ru
+LOG: 2025/07/01 12:50:34.111194 Completed POST /user/autho/forgot-password/code
+LOG: 2025/07/01 12:50:59.787648 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:50:59.831952 Succesfull update password for email: golovlev-2005@mail.ru
+LOG: 2025/07/01 12:50:59.831952 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:56:15.870879 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:56:15.901383 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:56:28.277681 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:56:28.323826 Bad request to DB: pq: столбец "uc" в таблице "User_Codes" не существует
+LOG: 2025/07/01 12:56:28.323826 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:56:50.339935 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:56:50.368423 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:56:56.332173 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:56:56.378562 Succesfull update password for email: golovlev-2005@mail.ru
+LOG: 2025/07/01 12:56:56.378562 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:57:05.256448 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:57:05.299676 No one row updated
+LOG: 2025/07/01 12:57:05.299676 Completed POST /user/autho/forgot-password/reset

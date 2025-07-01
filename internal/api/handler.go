@@ -425,6 +425,59 @@ func SendNewConfirmationPasswordCodeHandler(repo repository.UsRepo)http.HandlerF
 	}
 } 
 
+func CheckConfirmationPasswordCodeHandler(repo repository.UsRepo) http.HandlerFunc{
+	return func(w http.ResponseWriter, r *http.Request) {
+		//получение json-данных
+		user, err := util.DecodeJSONBody[models.UserConfirm](r)
+        if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't parse json: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't parse json", ErrorCode: "3112"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+        }
+
+		//валидация
+		validate := validator.New()
+		err = validate.Struct(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("%v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusUnprocessableEntity)
+			errors := []models.APIError{{Error: "Field validation error", ErrorCode: "0912"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		//отправка запроса на проверку данного поля
+		resReq, err := repo.CheckConfirmationEmailPasswordCode(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		if !resReq {
+			util.LogWrite("No one row not find")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			errors := []models.APIError{{Error: "No one row not find", ErrorCode: "1290"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return			
+		}
+
+		util.LogWrite(fmt.Sprintf("Succesfull check password code for email: %s", user.Email))
+		w.WriteHeader(http.StatusOK)
+	}
+}
+
 func ResetPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 	return func(w http.ResponseWriter, r *http.Request) {
 

@@ -22,6 +22,7 @@ type UsRepo interface{
 	GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error)
 	CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error)
 	CreateNewPassword(user models.UserResetPassword) (result bool, err error)
+	CheckConfirmationEmailPasswordCode(user models.UserConfirm) (bool,error)
 }
 
 type UserRepository struct {
@@ -141,6 +142,23 @@ func (usRepo *UserRepository) CreateNewConfirmationEmailPasswordCode(user models
 	return err
 }
 
+func (usRepo *UserRepository) CheckConfirmationEmailPasswordCode(user models.UserConfirm) (bool,error){
+	query := `SELECT u.id FROM public."User" u
+	JOIN "User_Codes" uc ON u.id = uc.user_id 
+	WHERE uc.email_confirmation_password_code = $1
+	AND u.email = $2
+	AND uc.expiration_email_confirmation_password_code > NOW()`
+	var id int
+	err := usRepo.db.QueryRow(query, user.EmailConfirmationCode, user.Email).Scan(&id)
+	if err != nil {
+		return false, err
+	}
+	if id == 0 {
+		return false, nil
+	}
+	return true, nil
+}
+
 func (usRepo *UserRepository) CreateNewPassword(user models.UserResetPassword) (result bool, err error){
 	query := `UPDATE "User" u
 		SET password = $1
@@ -154,6 +172,23 @@ func (usRepo *UserRepository) CreateNewPassword(user models.UserResetPassword) (
 		return false, err
 	}
 	rowsafected, err := res.RowsAffected()
+	if err != nil {
+		return false, err 
+	}
+	if rowsafected == 0{
+		return false, nil
+	}
+	query = `UPDATE "User_Codes" uc
+	SET expiration_email_confirmation_password_code = NOW()
+	FROM "User" u
+	WHERE u.id = uc.user_id
+		AND u.email = $1`
+
+	res, err = usRepo.db.Exec(query, user.Email)
+	if err != nil {
+		return false, err
+	}
+	rowsafected, err = res.RowsAffected()
 	if err != nil {
 		return false, err 
 	}

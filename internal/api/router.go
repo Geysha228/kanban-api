@@ -25,7 +25,11 @@ func SetupRouter() http.Handler{
 	//отправка кода для сброса пароля
 	mux.Handle("/user/autho/forgot-password", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, SendNewConfirmationPasswordCodeHandler(userRepo)))))
 	
+	//проверка кода для сброса пароля
+	mux.Handle("/user/autho/forgot-password/code", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, CheckConfirmationPasswordCodeHandler(userRepo)))))
+
+	//сброс пароля
 	mux.Handle("/user/autho/forgot-password/reset", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, ResetPasswordHandler(userRepo)))))
-	
+
 	return mux
 }
