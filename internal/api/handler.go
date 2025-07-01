@@ -424,3 +424,69 @@ func SendNewConfirmationPasswordCodeHandler(repo repository.UsRepo)http.HandlerF
 		w.Write(jsonData)
 	}
 } 
+
+func ResetPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		//Получение данных из тела запроса
+		user, err := util.DecodeJSONBody[models.UserResetPassword](r)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't parse json: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't parse json", ErrorCode: "3112"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+        }
+		
+		//валидация запроса
+		validate := validator.New()
+		err = validate.Struct(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Field validation error: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusUnprocessableEntity)
+			errors := []models.APIError{{Error: "Field validation error", ErrorCode: "0912"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		//Создание нового хешированного пароля
+		user.Password, err = util.HashPassword(user.Password)
+		if err != nil {
+			util.LogWrite("Can't hash password")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Can't hash password", ErrorCode: "1110"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		//Отправление запроса в БД на изменение пароля
+		resReq, err := repo.CreateNewPassword(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		if !resReq {
+			util.LogWrite("No one row updated")
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			errors := []models.APIError{{Error: "No one row updated", ErrorCode: "0124"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return			
+		}
+
+		util.LogWrite(fmt.Sprintf("Succesfull update password for email: %s", user.Email))
+		w.WriteHeader(http.StatusOK)
+	}
+}

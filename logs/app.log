@@ -257,3 +257,37 @@ LOG: 2025/06/29 16:02:49.522928 Succesful ping database: 26.94.236.113:9000
 LOG: 2025/06/29 16:02:51.884952 Started POST /user/autho/forgot-password
 LOG: 2025/06/29 16:02:53.200377 Send confirm password message to email golovlev-2005@mail.ru
 LOG: 2025/06/29 16:02:53.200377 Completed POST /user/autho/forgot-password
+LOG: 2025/07/01 12:17:51.733310 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:17:51.767405 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:19:15.754279 Started POST /user/reg
+LOG: 2025/07/01 12:19:15.754279 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/07/01 12:19:15.755791 Response to check email - false
+LOG: 2025/07/01 12:19:15.755791 Send request to check login - vivsiass
+LOG: 2025/07/01 12:19:15.756845 Response to check login - false
+LOG: 2025/07/01 12:19:15.804450 Succesful create user: vivsiass
+LOG: 2025/07/01 12:19:17.599345 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 12:19:17.599345 Completed POST /user/reg
+LOG: 2025/07/01 12:19:37.736382 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 12:19:37.737511 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/07/01 12:19:37.737511 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 12:21:56.338725 Started POST /user/autho/forgot-password
+LOG: 2025/07/01 12:21:57.918304 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 12:21:57.918304 Completed POST /user/autho/forgot-password
+LOG: 2025/07/01 12:22:21.231007 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:22:21.276633 Bad request to DB: pq: ошибка синтаксиса (примерное положение: "User")
+LOG: 2025/07/01 12:22:21.276633 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:22:45.306531 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:22:45.341497 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:22:46.379418 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:22:46.422953 Bad request to DB: pq: ошибка синтаксиса (примерное положение: "JOIN")
+LOG: 2025/07/01 12:22:46.422953 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:23:44.369669 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:23:44.399428 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:23:46.944063 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:23:46.988452 Bad request to DB: pq: отношение "user_codes" не существует
+LOG: 2025/07/01 12:23:46.988452 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:26:01.730085 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 12:26:01.759921 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 12:26:08.023948 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 12:26:08.070046 Succesfull update password for email: golovlev-2005@mail.ru
+LOG: 2025/07/01 12:26:08.070046 Completed POST /user/autho/forgot-password/reset

@@ -37,3 +37,10 @@ type User_Codes struct {
 	EmailConfirmationPasswordCode           string `json:"email_confirmation_password_code" validate:"omitempty,len=6"`
 	ExpirationEmailConfirmationPasswordCode time.Time `json:"expiration_email_confirmation_password_code"`
 }
+
+type UserResetPassword struct{
+	Email                 string `json:"email" validate:"required,min=4,max=30,email"`
+	Password string `json:"password" validate:"required,min=8,max=20,alphanum"`
+	EmailConfirmationPasswordCode           string `json:"email_confirmation_password_code" validate:"omitempty,len=6"`
+}
+

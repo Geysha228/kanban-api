@@ -21,6 +21,7 @@ type UsRepo interface{
 	CreateNewConfirmationEmailCode(user models.UserConfirm) (err error)
 	GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error)
 	CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error)
+	CreateNewPassword(user models.UserResetPassword) (result bool, err error)
 }
 
 type UserRepository struct {
@@ -138,4 +139,26 @@ func (usRepo *UserRepository) CreateNewConfirmationEmailPasswordCode(user models
 	query := `UPDATE public."User_Codes" SET email_confirmation_password_code = $1, expiration_email_confirmation_password_code = $2 WHERE user_id = $3`
 	_, err = usRepo.db.Exec(query, user.EmailConfirmationCode, time.Now().Add(15 * time.Minute) ,user.ID)
 	return err
+}
+
+func (usRepo *UserRepository) CreateNewPassword(user models.UserResetPassword) (result bool, err error){
+	query := `UPDATE "User" u
+		SET password = $1
+		FROM "User_Codes" uc
+		WHERE u.id = uc.user_id
+		  AND u.email = $2
+		  AND uc.email_confirmation_password_code = $3
+		  AND uc.expiration_email_confirmation_password_code > NOW();`
+	res, err := usRepo.db.Exec(query, user.Password, user.Email, user.EmailConfirmationPasswordCode)
+	if err != nil {
+		return false, err
+	}
+	rowsafected, err := res.RowsAffected()
+	if err != nil {
+		return false, err 
+	}
+	if rowsafected == 0{
+		return false, nil
+	}
+	return true, nil
 }
