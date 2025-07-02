@@ -17,9 +17,9 @@ type UsRepo interface{
 	CreateUser(user *models.User) error
 	GetHashPasswordFromDb(login string) (password string, err error)
 	ConfirmEmail(user models.UserConfirm) (bool, error)
-	GetHashPasswordAndIDAndEmailFromDB(loginEmail string) (user models.UserAutho, err error)
+	GetHashPasswordAndEmailFromDB(loginEmail string) (user models.UserAutho, err error)
 	CreateNewConfirmationEmailCode(user models.UserConfirm) (err error)
-	GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error)
+	GetEmailByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error)
 	CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error)
 	CreateNewPassword(user models.UserResetPassword) (result bool, err error)
 	CheckConfirmationEmailPasswordCode(user models.UserConfirm) (bool,error)
@@ -95,50 +95,59 @@ func (usRepo *UserRepository) GetHashPasswordFromDb(login string) (password stri
 }
 
 func (usRepo *UserRepository) ConfirmEmail(user models.UserConfirm) (bool, error) {
-	queryBool := `
-		SELECT u.id
-		FROM public."User" u
-		JOIN public."User_Codes" uc ON uc.user_id = u.id
-		WHERE u.email = $1
-		AND uc.expiration_email_confirmation_code > NOW()
-		AND uc."email_сonfirmation_сode" = $2`
-	var userID int
-	err := usRepo.db.QueryRow(queryBool, user.Email, user.EmailConfirmationCode).Scan(&userID)
-	if err == sql.ErrNoRows {
-		return false, nil
-	}
-	if err != nil {
-		return false, err
-	}
+	//TODO: refactor this
+	// UPDATE public."User" u SET is_confirmed = true FROM "User_Codes" uc WHERE u.id = uc.user_id AND u.email = $1 AND  uc.expiration_email_confirmation_code > NOW() AND uc."email_сonfirmation_сode" = $2
+	query := `
+	UPDATE public."User" u
+	SET "is_сonfirmed" = true
+	FROM "User_Codes" uc
+	WHERE u.id = uc.user_id
+	AND u.email = $1
+	AND uc.expiration_email_confirmation_code > NOW()
+	AND uc."email_сonfirmation_сode" = $2
+	`
 
-	_, err = usRepo.db.Exec(`UPDATE public."User" SET is_сonfirmed = true WHERE id = $1`, userID)
+	res, err := usRepo.db.Exec(query, user.Email, user.EmailConfirmationCode)
 	if err != nil {
 		return false, err
+	}
+	rowsafected, err := res.RowsAffected()
+	if err != nil {
+		return false, err
+	}
+	if rowsafected == 0 {
+		return false, nil
 	}
 	return true, nil
 }
 
-func (usRepo *UserRepository) GetHashPasswordAndIDAndEmailFromDB(loginEmail string) (user models.UserAutho, err error){
-	query := `SELECT password, id, email FROM public."User" WHERE login = $1 OR email = $1`
-	err = usRepo.db.QueryRow(query, loginEmail).Scan(&user.Password, &user.ID, &user.LoginEmail)
+func (usRepo *UserRepository) GetHashPasswordAndEmailFromDB(loginEmail string) (user models.UserAutho, err error){
+	query := `SELECT password, email FROM public."User" WHERE login = $1 OR email = $1`
+	err = usRepo.db.QueryRow(query, loginEmail).Scan(&user.Password, &user.LoginEmail)
 	return user, err
 }
 
 func (usRepo *UserRepository) CreateNewConfirmationEmailCode(user models.UserConfirm) (err error){
-	query := `UPDATE public."User_Codes" SET "email_сonfirmation_сode" = $1, expiration_email_confirmation_code = $2 WHERE user_id = $3`
-	_, err = usRepo.db.Exec(query, user.EmailConfirmationCode, time.Now().Add(15 * time.Minute) ,user.ID)
+	query := `UPDATE public."User_Codes" uc
+				SET "email_сonfirmation_сode" = $1, expiration_email_confirmation_code = $2
+				FROM "User" u
+				WHERE uc.user_id = u.id`
+	_, err = usRepo.db.Exec(query, user.EmailConfirmationCode, time.Now().Add(15 * time.Minute))
 	return err
 }
 
-func (usRepo *UserRepository) GetEmailAndIDByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error){
-	query := `SELECT email, id FROM public."User" WHERE login = $1 OR email = $1`
-	err = usRepo.db.QueryRow(query, loginEmail).Scan(&user.Email, &user.ID)
+func (usRepo *UserRepository) GetEmailByLoginOrEmail(loginEmail string) (user models.UserConfirm,err error){
+	query := `SELECT email FROM public."User" WHERE login = $1 OR email = $1`
+	err = usRepo.db.QueryRow(query, loginEmail).Scan(&user.Email)
 	return user, err
 }
 
 func (usRepo *UserRepository) CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error){
-	query := `UPDATE public."User_Codes" SET email_confirmation_password_code = $1, expiration_email_confirmation_password_code = $2 WHERE user_id = $3`
-	_, err = usRepo.db.Exec(query, user.EmailConfirmationCode, time.Now().Add(15 * time.Minute) ,user.ID)
+	query := `UPDATE public."User_Codes" uc
+	SET email_confirmation_password_code = $1, expiration_email_confirmation_password_code = $2
+	FROM "User" u
+	WHERE uc.user_id = u.id`
+	_, err = usRepo.db.Exec(query, user.EmailConfirmationCode, time.Now().Add(15 * time.Minute))
 	return err
 }
 
@@ -167,7 +176,7 @@ func (usRepo *UserRepository) CreateNewPassword(user models.UserResetPassword) (
 		  AND u.email = $2
 		  AND uc.email_confirmation_password_code = $3
 		  AND uc.expiration_email_confirmation_password_code > NOW();`
-	res, err := usRepo.db.Exec(query, user.Password, user.Email, user.EmailConfirmationPasswordCode)
+	res, err := usRepo.db.Exec(query, user.Password, user.Email, user.EmailConfirmationCode)
 	if err != nil {
 		return false, err
 	}

@@ -243,7 +243,7 @@ func SendNewConfirmationCodeHandler(repo repository.UsRepo)http.HandlerFunc{
 		}
 
 		//Получение hash-пароля из БД и почты
-		userAutho, err := repo.GetHashPasswordAndIDAndEmailFromDB(user.LoginEmail)
+		userAutho, err := repo.GetHashPasswordAndEmailFromDB(user.LoginEmail)
 		if err != nil {
 			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
 			w.Header().Set("Content-Type", "application/json")
@@ -290,7 +290,7 @@ func SendNewConfirmationCodeHandler(repo repository.UsRepo)http.HandlerFunc{
 
 		
 		//Отправление в БД нового кода
-		userConf := models.UserConfirm{ID: userAutho.ID, Email: userAutho.LoginEmail, EmailConfirmationCode: number.String()}
+		userConf := models.UserConfirm{ Email: userAutho.LoginEmail, EmailConfirmationCode: number.String()}
 		err = repo.CreateNewConfirmationEmailCode(userConf)
 		if err != nil {
 			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
@@ -348,7 +348,7 @@ func SendNewConfirmationPasswordCodeHandler(repo repository.UsRepo)http.HandlerF
 		}
 
 		//получение почты пользователя
-		userConf, err := repo.GetEmailAndIDByLoginOrEmail(user.LoginEmail)
+		userConf, err := repo.GetEmailByLoginOrEmail(user.LoginEmail)
 		if err != nil{
 			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
 			w.Header().Set("Content-Type", "application/json")
@@ -541,5 +541,36 @@ func ResetPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 
 		util.LogWrite(fmt.Sprintf("Succesfull update password for email: %s", user.Email))
 		w.WriteHeader(http.StatusOK)
+	}
+}
+
+func AuthorizationUserHandler(repo repository.UsRepo) http.HandlerFunc{
+	return func(w http.ResponseWriter, r *http.Request) {
+		//Получение данных из тела запроса
+		user, err := util.DecodeJSONBody[models.UserAutho](r)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't parse json: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't parse json", ErrorCode: "3112"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+        }
+		
+		//валидация запроса
+		validate := validator.New()
+		err = validate.Struct(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Field validation error: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusUnprocessableEntity)
+			errors := []models.APIError{{Error: "Field validation error", ErrorCode: "0912"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		 
 	}
 }

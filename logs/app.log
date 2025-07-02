@@ -325,3 +325,307 @@ LOG: 2025/07/01 12:56:56.378562 Completed POST /user/autho/forgot-password/reset
 LOG: 2025/07/01 12:57:05.256448 Started POST /user/autho/forgot-password/reset
 LOG: 2025/07/01 12:57:05.299676 No one row updated
 LOG: 2025/07/01 12:57:05.299676 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 13:09:45.171519 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 13:09:45.202469 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 13:09:46.422922 Started POST /user/reg
+LOG: 2025/07/01 13:09:46.422922 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/07/01 13:09:46.423813 Response to check email - false
+LOG: 2025/07/01 13:09:46.423813 Send request to check login - vivsiass
+LOG: 2025/07/01 13:09:46.424318 Response to check login - false
+LOG: 2025/07/01 13:09:46.468626 Succesful create user: vivsiass
+LOG: 2025/07/01 13:09:48.425663 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 13:09:48.425663 Completed POST /user/reg
+LOG: 2025/07/01 13:10:02.643223 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 13:10:02.643859 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/07/01 13:10:02.643859 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 13:10:13.340294 Started POST /user/autho/forgot-password
+LOG: 2025/07/01 13:10:14.848550 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 13:10:14.848550 Completed POST /user/autho/forgot-password
+LOG: 2025/07/01 13:10:29.136445 Started POST /user/autho/forgot-password/code
+LOG: 2025/07/01 13:10:29.136949 Succesfull check password code for email: golovlev-2005@mail.ru
+LOG: 2025/07/01 13:10:29.136949 Completed POST /user/autho/forgot-password/code
+LOG: 2025/07/01 13:10:36.185683 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 13:10:36.234304 Succesfull update password for email: golovlev-2005@mail.ru
+LOG: 2025/07/01 13:10:36.234304 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/01 14:01:47.102606 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:01:47.132786 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:02:23.490575 Started POST /user/reg
+LOG: 2025/07/01 14:02:23.490575 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/07/01 14:02:23.491811 Response to check email - false
+LOG: 2025/07/01 14:02:23.491811 Send request to check login - vivsiass
+LOG: 2025/07/01 14:02:23.492315 Response to check login - false
+LOG: 2025/07/01 14:02:23.537807 Succesful create user: vivsiass
+LOG: 2025/07/01 14:02:26.129269 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 14:02:26.129269 Completed POST /user/reg
+LOG: 2025/07/01 14:02:44.440652 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:02:44.441853 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 14:02:44.441853 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:03:03.856303 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:03:03.887788 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:03:05.472187 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:03:05.473710 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 14:03:05.473710 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:03:28.241045 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:03:28.273462 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:03:29.884568 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:03:29.886865 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 14:03:29.886865 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:03:44.668006 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:03:44.800402 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:03:46.228579 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:03:46.230985 Bad request to DB: pq: столбец "u" в таблице "User" не существует
+LOG: 2025/07/01 14:03:46.230985 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:05:57.080094 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:05:57.110408 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:06:01.972023 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:06:01.973048 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 14:06:01.973048 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:06:38.732947 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:06:38.766036 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:06:40.695503 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:06:40.697126 Bad request to DB: pq: столбец uc.email_confirmation_code не существует
+LOG: 2025/07/01 14:06:40.697126 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:07:17.505591 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:07:17.537325 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:07:20.555672 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:07:20.557889 Bad request to DB: pq: столбец uc.email_confirmation_code не существует
+LOG: 2025/07/01 14:07:20.557889 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:07:47.261786 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:07:47.293525 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:07:48.816427 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:07:48.818512 Bad request to DB: pq: столбец uc.email_confirmation_code не существует
+LOG: 2025/07/01 14:07:48.818512 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 14:08:49.949582 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 14:08:50.084615 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 14:08:55.522013 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 14:08:55.523521 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 14:08:55.523521 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 16:50:57.358520 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 16:50:57.390919 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 16:51:46.765677 Started POST /user/reg
+LOG: 2025/07/01 16:51:46.765677 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/07/01 16:51:46.769203 Response to check email - false
+LOG: 2025/07/01 16:51:46.769203 Send request to check login - vivsiass
+LOG: 2025/07/01 16:51:46.769771 Response to check login - false
+LOG: 2025/07/01 16:51:46.821673 Succesful create user: vivsiass
+LOG: 2025/07/01 16:51:48.601131 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 16:51:48.601131 Completed POST /user/reg
+LOG: 2025/07/01 16:52:06.334956 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 16:52:06.335504 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 16:52:06.335504 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 16:54:10.936821 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 16:54:10.966048 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 16:54:13.438353 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 16:54:13.440105 Bad request to DB: pq: столбец "is_confirmed" в таблице "User" не существует
+LOG: 2025/07/01 16:54:13.440105 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 16:54:26.889740 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 16:54:26.921184 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 16:54:28.171187 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 16:54:28.173349 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/07/01 16:54:28.173349 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 17:10:42.103405 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 17:10:42.246742 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 17:10:49.885626 Started POST /user/autho/forgot-password
+LOG: 2025/07/01 17:10:51.241534 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 17:10:51.241534 Completed POST /user/autho/forgot-password
+LOG: 2025/07/01 17:11:41.860184 Started POST /user/autho/forgot-password
+LOG: 2025/07/01 17:11:43.360631 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/01 17:11:43.360631 Completed POST /user/autho/forgot-password
+LOG: 2025/07/01 21:02:32.393642 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 21:02:32.423753 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 21:03:36.306249 Started POST /user/reg
+LOG: 2025/07/01 21:03:36.306249 Send request to check email - faricgh2@gmail.com
+LOG: 2025/07/01 21:03:36.339924 Response to check email - false
+LOG: 2025/07/01 21:03:36.339924 Send request to check login - faricgh
+LOG: 2025/07/01 21:03:36.339924 Response to check login - false
+LOG: 2025/07/01 21:03:36.339924 Field validation error: Key: 'User.Password' Error:Field validation for 'Password' failed on the 'alphanum' tag
+LOG: 2025/07/01 21:03:36.339924 Completed POST /user/reg
+LOG: 2025/07/01 21:04:01.304541 Started POST /user/reg
+LOG: 2025/07/01 21:04:01.304541 Send request to check email - faricgh2@gmail.com
+LOG: 2025/07/01 21:04:01.304541 Response to check email - false
+LOG: 2025/07/01 21:04:01.304541 Send request to check login - faricgh
+LOG: 2025/07/01 21:04:01.304541 Response to check login - false
+LOG: 2025/07/01 21:04:01.354654 Succesful create user: faricgh
+LOG: 2025/07/01 21:04:03.039926 Send confirm message to email faricgh2@gmail.com
+LOG: 2025/07/01 21:04:03.039926 Completed POST /user/reg
+LOG: 2025/07/01 21:04:23.972146 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:04:23.972146 Can't parse json: json: unknown field "code"
+LOG: 2025/07/01 21:04:23.972146 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:15:17.873536 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/01 21:15:17.905004 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/01 21:16:12.593651 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:16:12.593651 Can't parse json: json: unknown field "code"
+LOG: 2025/07/01 21:16:12.593651 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:23.436490 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:23.436490 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:23.436490 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:24.769293 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:24.769293 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:24.769293 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:24.996513 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:24.996513 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:24.996513 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.157919 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.157919 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:25.157919 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.303721 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.303721 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:25.303721 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.464658 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.464658 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:25.464658 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.618853 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.618853 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:25.618853 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.780453 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.780453 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:25.780453 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.911657 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:18:25.911657 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:18:25.911657 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:19:08.730131 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:19:08.730131 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'required' tag
+LOG: 2025/07/01 21:19:08.730131 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:45:40.543808 Started POST /user/reg
+LOG: 2025/07/01 21:45:40.543808 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:45:40.545158 Response to check email - false
+LOG: 2025/07/01 21:45:40.545158 Send request to check login - cdsass
+LOG: 2025/07/01 21:45:40.545158 Response to check login - false
+LOG: 2025/07/01 21:45:40.588952 Succesful create user: cdsass
+LOG: 2025/07/01 21:45:43.069918 Send confirm message to email dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:45:43.069918 Completed POST /user/reg
+LOG: 2025/07/01 21:46:09.422890 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:46:09.422890 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'email' tag
+Key: 'UserConfirm.EmailConfirmationCode' Error:Field validation for 'EmailConfirmationCode' failed on the 'required' tag
+LOG: 2025/07/01 21:46:09.422890 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:46:43.722788 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:46:43.722788 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'email' tag
+Key: 'UserConfirm.EmailConfirmationCode' Error:Field validation for 'EmailConfirmationCode' failed on the 'required' tag
+LOG: 2025/07/01 21:46:43.722788 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:47:00.437659 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:47:00.437659 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'email' tag
+Key: 'UserConfirm.EmailConfirmationCode' Error:Field validation for 'EmailConfirmationCode' failed on the 'required' tag
+LOG: 2025/07/01 21:47:00.437659 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:52:48.301695 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:52:48.301695 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'email' tag
+Key: 'UserConfirm.EmailConfirmationCode' Error:Field validation for 'EmailConfirmationCode' failed on the 'required' tag
+LOG: 2025/07/01 21:52:48.301695 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 21:54:20.848858 Started POST /user/reg
+LOG: 2025/07/01 21:54:20.848858 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:54:20.848858 Response to check email - false
+LOG: 2025/07/01 21:54:20.848858 Send request to check login - Lucik
+LOG: 2025/07/01 21:54:20.848858 Response to check login - false
+LOG: 2025/07/01 21:54:20.849363 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/07/01 21:54:20.849363 Completed POST /user/reg
+LOG: 2025/07/01 21:54:28.588967 Started POST /user/reg
+LOG: 2025/07/01 21:54:28.588967 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:54:28.588967 Response to check email - false
+LOG: 2025/07/01 21:54:28.588967 Send request to check login - Lucik
+LOG: 2025/07/01 21:54:28.588967 Response to check login - false
+LOG: 2025/07/01 21:54:28.589473 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/07/01 21:54:28.589473 Completed POST /user/reg
+LOG: 2025/07/01 21:54:31.099413 Started POST /user/reg
+LOG: 2025/07/01 21:54:31.099413 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:54:31.099413 Response to check email - false
+LOG: 2025/07/01 21:54:31.099413 Send request to check login - Lucik
+LOG: 2025/07/01 21:54:31.099413 Response to check login - false
+LOG: 2025/07/01 21:54:31.099918 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/07/01 21:54:31.099918 Completed POST /user/reg
+LOG: 2025/07/01 21:54:44.660107 Started POST /user/reg
+LOG: 2025/07/01 21:54:44.660107 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:54:44.660107 Response to check email - false
+LOG: 2025/07/01 21:54:44.660107 Send request to check login - Lucik
+LOG: 2025/07/01 21:54:44.660107 Response to check login - false
+LOG: 2025/07/01 21:54:44.660107 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/07/01 21:54:44.660107 Completed POST /user/reg
+LOG: 2025/07/01 21:54:56.803983 Started POST /user/reg
+LOG: 2025/07/01 21:54:56.803983 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:54:56.804512 Response to check email - false
+LOG: 2025/07/01 21:54:56.804512 Send request to check login - Lucik
+LOG: 2025/07/01 21:54:56.804512 Response to check login - false
+LOG: 2025/07/01 21:54:56.805038 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/07/01 21:54:56.805038 Completed POST /user/reg
+LOG: 2025/07/01 21:54:58.108441 Started POST /user/reg
+LOG: 2025/07/01 21:54:58.108441 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:54:58.108441 Response to check email - false
+LOG: 2025/07/01 21:54:58.108441 Send request to check login - Lucik
+LOG: 2025/07/01 21:54:58.108441 Response to check login - false
+LOG: 2025/07/01 21:54:58.108441 Field validation error: Key: 'User.Login' Error:Field validation for 'Login' failed on the 'min' tag
+LOG: 2025/07/01 21:54:58.108441 Completed POST /user/reg
+LOG: 2025/07/01 21:55:09.548226 Started POST /user/reg
+LOG: 2025/07/01 21:55:09.548226 Send request to check email - dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:55:09.548226 Response to check email - false
+LOG: 2025/07/01 21:55:09.548226 Send request to check login - Lucik1111
+LOG: 2025/07/01 21:55:09.548226 Response to check login - false
+LOG: 2025/07/01 21:55:09.595063 Succesful create user: Lucik1111
+LOG: 2025/07/01 21:55:11.160956 Send confirm message to email dawdaw.02f@gmail.com
+LOG: 2025/07/01 21:55:11.160956 Completed POST /user/reg
+LOG: 2025/07/01 21:58:26.431628 Started POST /user/reg
+LOG: 2025/07/01 21:58:26.431628 Send request to check email - faricgh2@gmail.com
+LOG: 2025/07/01 21:58:26.431628 Response to check email - false
+LOG: 2025/07/01 21:58:26.431628 Send request to check login - Maloiii
+LOG: 2025/07/01 21:58:26.431628 Response to check login - false
+LOG: 2025/07/01 21:58:26.476541 Succesful create user: Maloiii
+LOG: 2025/07/01 21:58:27.781400 Send confirm message to email faricgh2@gmail.com
+LOG: 2025/07/01 21:58:27.781400 Completed POST /user/reg
+LOG: 2025/07/01 21:58:46.720361 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 21:58:46.720361 Key: 'UserConfirm.Email' Error:Field validation for 'Email' failed on the 'email' tag
+Key: 'UserConfirm.EmailConfirmationCode' Error:Field validation for 'EmailConfirmationCode' failed on the 'required' tag
+LOG: 2025/07/01 21:58:46.720361 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 22:00:56.866363 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 22:00:56.868244 Succesful confirmation user: faricgh2@gmail.com
+LOG: 2025/07/01 22:00:56.868244 Completed POST /user/reg/confirm-email
+LOG: 2025/07/01 22:00:58.491619 Started POST /user/reg/confirm-email
+LOG: 2025/07/01 22:00:58.492228 Succesful confirmation user: faricgh2@gmail.com
+LOG: 2025/07/01 22:00:58.492228 Completed POST /user/reg/confirm-email
+LOG: 2025/07/02 11:30:35.403082 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 11:30:35.435850 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 11:30:42.849078 Started POST /user/reg
+LOG: 2025/07/02 11:30:42.849078 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/07/02 11:30:42.866919 Response to check email - false
+LOG: 2025/07/02 11:30:42.866919 Send request to check login - vivsiass
+LOG: 2025/07/02 11:30:42.866919 Response to check login - false
+LOG: 2025/07/02 11:30:42.917884 Succesful create user: vivsiass
+LOG: 2025/07/02 11:30:44.611388 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 11:30:44.611388 Completed POST /user/reg
+LOG: 2025/07/02 11:31:28.898283 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 11:31:28.943211 Bad request to DB: pq: got 3 parameters but the statement requires 2
+LOG: 2025/07/02 11:31:28.943211 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 11:33:44.195374 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 11:33:44.224282 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 11:33:46.069520 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 11:33:47.632077 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 11:33:47.632077 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 11:42:23.693619 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 11:42:23.721807 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 11:45:16.021620 Started POST /user/reg
+LOG: 2025/07/02 11:45:16.021620 Send request to check email - golovlev-2005@mail.ru
+LOG: 2025/07/02 11:45:16.022688 Response to check email - false
+LOG: 2025/07/02 11:45:16.022688 Send request to check login - vivsiass
+LOG: 2025/07/02 11:45:16.023193 Response to check login - false
+LOG: 2025/07/02 11:45:16.067395 Succesful create user: vivsiass
+LOG: 2025/07/02 11:45:18.525151 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 11:45:18.525151 Completed POST /user/reg
+LOG: 2025/07/02 11:45:34.166818 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 11:45:35.557650 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 11:45:35.557650 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 11:46:01.312815 Started POST /user/reg/confirm-email
+LOG: 2025/07/02 11:46:01.313820 Succesful confirmation user: golovlev-2005@mail.ru
+LOG: 2025/07/02 11:46:01.313820 Completed POST /user/reg/confirm-email
+LOG: 2025/07/02 11:46:06.997979 Started POST /user/autho/forgot-password
+LOG: 2025/07/02 11:46:06.999010 Bad request to DB: pq: таблица "uc" отсутствует в предложении FROM
+LOG: 2025/07/02 11:46:06.999010 Completed POST /user/autho/forgot-password
+LOG: 2025/07/02 11:46:16.550470 Started POST /user/autho/forgot-password
+LOG: 2025/07/02 11:46:16.550470 Bad request to DB: pq: таблица "uc" отсутствует в предложении FROM
+LOG: 2025/07/02 11:46:16.550470 Completed POST /user/autho/forgot-password
+LOG: 2025/07/02 11:47:37.483653 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 11:47:37.512764 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 11:47:38.955758 Started POST /user/autho/forgot-password
+LOG: 2025/07/02 11:47:40.236946 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 11:47:40.236946 Completed POST /user/autho/forgot-password
+LOG: 2025/07/02 11:48:00.510818 Started POST /user/autho/forgot-password/code
+LOG: 2025/07/02 11:48:00.511402 Succesfull check password code for email: golovlev-2005@mail.ru
+LOG: 2025/07/02 11:48:00.511402 Completed POST /user/autho/forgot-password/code
+LOG: 2025/07/02 11:48:05.962693 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/02 11:48:06.005650 Succesfull update password for email: golovlev-2005@mail.ru
+LOG: 2025/07/02 11:48:06.005650 Completed POST /user/autho/forgot-password/reset
