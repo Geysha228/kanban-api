@@ -546,6 +546,7 @@ func ResetPasswordHandler(repo repository.UsRepo)http.HandlerFunc{
 
 func AuthorizationUserHandler(repo repository.UsRepo) http.HandlerFunc{
 	return func(w http.ResponseWriter, r *http.Request) {
+
 		//Получение данных из тела запроса
 		user, err := util.DecodeJSONBody[models.UserAutho](r)
 		if err != nil {
@@ -571,6 +572,157 @@ func AuthorizationUserHandler(repo repository.UsRepo) http.HandlerFunc{
 			return
 		}
 
-		 
+		//получения хеша пароля
+		passwordHash, err := repo.GetHashPasswordFromDb(user.LoginEmail)
+		if err != nil{
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		if passwordHash == ""{
+			util.LogWrite("Invalid login or email")
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Invalid login or email", ErrorCode: "0412"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		//проверка хеша пароля
+		if !util.CheckPasswordHash(user.Password, passwordHash){
+			util.LogWrite("Invalid password")
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Invalid password", ErrorCode: "4142"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		
+		user.Password = passwordHash
+		
+		//проверка на подтвержденность пользователя
+		userID, confirmed, err := repo.GetConfirmedAndIdUser(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return			
+		}
+		if !confirmed {
+			util.LogWrite(fmt.Sprintf("User not confrimed: %s", user.LoginEmail))
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "User not confrimed", ErrorCode: "6314"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		var tokenString string
+
+		if user.RememberUser{
+			tokenString, err = util.CreateJWT(168, userID) 
+		} else {
+			tokenString, err = util.CreateJWT(8, userID)
+		}
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't create jwt-string: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Can't create jwt-string", ErrorCode: "8122"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		response := map[string]string{"token": tokenString}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(response)
+	}
+}
+
+func ChangeUserInfoHandler(repo repository.UsRepo) http.HandlerFunc{
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		//Получение данных из тела запроса
+		user, err := util.DecodeJSONBody[models.UserChange](r)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't parse json: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't parse json", ErrorCode: "3112"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+        }
+	
+		//валидация запроса
+		validate := validator.New()
+		err = validate.Struct(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Field validation error: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusUnprocessableEntity)
+			errors := []models.APIError{{Error: "Field validation error", ErrorCode: "0912"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		//получение токена из запроса
+		tokenString, err := util.GetTokenFromRequest(r)
+		if err != nil{
+			util.LogWrite(fmt.Sprintf("Can't read token: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			errors := []models.APIError{{Error: "Can't read token", ErrorCode: "0081"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		//парс токена
+		user.ID, err = util.ParseJWT(tokenString)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't parse token: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			errors := []models.APIError{{Error: "Can't parse token", ErrorCode: "0090"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		
+		//SQL- запрос на изменение
+		res, err := repo.ChangeUserinfo(user)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return				
+		}
+		if !res {
+			util.LogWrite("No one row updated")
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "No one row updated", ErrorCode: "0124"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+		util.LogWrite(fmt.Sprintf("succesful change info for user: %d", user.ID ))
+		w.WriteHeader(http.StatusOK)
 	}
 }

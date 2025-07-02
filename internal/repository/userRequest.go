@@ -23,6 +23,8 @@ type UsRepo interface{
 	CreateNewConfirmationEmailPasswordCode(user models.UserConfirm) (err error)
 	CreateNewPassword(user models.UserResetPassword) (result bool, err error)
 	CheckConfirmationEmailPasswordCode(user models.UserConfirm) (bool,error)
+	GetConfirmedAndIdUser(user models.UserAutho) (userID int,result bool, err error)
+	ChangeUserinfo(user models.UserChange) (result bool, err error)
 }
 
 type UserRepository struct {
@@ -88,9 +90,9 @@ func (usRepo *UserRepository) CreateUser(user *models.User) error {
 	return nil
 }
 
-func (usRepo *UserRepository) GetHashPasswordFromDb(login string) (password string, err error) {
+func (usRepo *UserRepository) GetHashPasswordFromDb(loginEmail string) (password string, err error) {
 	query := `SELECT password FROM public."User" WHERE login = $1 OR email = $1`
-	err = usRepo.db.QueryRow(query, login).Scan(&password)
+	err = usRepo.db.QueryRow(query, loginEmail).Scan(&password)
 	return password, err
 }
 
@@ -202,6 +204,39 @@ func (usRepo *UserRepository) CreateNewPassword(user models.UserResetPassword) (
 		return false, err 
 	}
 	if rowsafected == 0{
+		return false, nil
+	}
+	return true, nil
+}
+
+func (usRepo *UserRepository) GetConfirmedAndIdUser(user models.UserAutho) (userID int,result bool, err error){
+	query := `SELECT "is_сonfirmed", id
+			  FROM "User"
+			  WHERE (email = $1 OR login = $1)
+			  AND password = $2`
+	err = usRepo.db.QueryRow(query, user.LoginEmail, user.Password).Scan(&result, &userID)
+	if err != nil {
+		return 0,false, err
+	}
+	return userID,result, err
+}
+
+func (usRepo *UserRepository) ChangeUserinfo(user models.UserChange) (result bool, err error){
+	query := `UPDATE "User" SET 
+				first_name = $1,
+				last_name = $2,
+				patronymic = $3,
+				position = $4
+				WHERE id = $5`
+	res, err := usRepo.db.Exec(query, user.FirstName, user.LastName, user.Patronymic, user.Position, user.ID)
+	if err != nil {
+		return false, err
+	}
+	rowAffected, err := res.RowsAffected()
+	if err != nil {
+		return false, err
+	}
+	if rowAffected == 0 {
 		return false, nil
 	}
 	return true, nil

@@ -629,3 +629,77 @@ LOG: 2025/07/02 11:48:00.511402 Completed POST /user/autho/forgot-password/code
 LOG: 2025/07/02 11:48:05.962693 Started POST /user/autho/forgot-password/reset
 LOG: 2025/07/02 11:48:06.005650 Succesfull update password for email: golovlev-2005@mail.ru
 LOG: 2025/07/02 11:48:06.005650 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/02 12:37:40.926330 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 12:37:40.955753 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 12:53:20.431096 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 12:53:20.570078 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 12:53:32.705371 Started POST /user/autho/forgot-password
+LOG: 2025/07/02 12:53:34.564410 Send confirm password message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 12:53:34.564410 Completed POST /user/autho/forgot-password
+LOG: 2025/07/02 12:53:58.518008 Started POST /user/autho/forgot-password/reset
+LOG: 2025/07/02 12:53:58.561338 Succesfull update password for email: golovlev-2005@mail.ru
+LOG: 2025/07/02 12:53:58.561338 Completed POST /user/autho/forgot-password/reset
+LOG: 2025/07/02 12:54:46.722865 Started POST /user/autho
+LOG: 2025/07/02 12:54:46.722865 Can't parse json: invalid character '}' looking for beginning of object key string
+LOG: 2025/07/02 12:54:46.722865 Completed POST /user/autho
+LOG: 2025/07/02 12:54:51.006273 Started POST /user/autho
+LOG: 2025/07/02 12:54:51.006273 Field validation error: Key: 'UserAutho.Password' Error:Field validation for 'Password' failed on the 'min' tag
+LOG: 2025/07/02 12:54:51.006273 Completed POST /user/autho
+LOG: 2025/07/02 12:55:29.161055 Started POST /user/autho
+LOG: 2025/07/02 12:55:29.207067 Bad request to DB: pq: столбец "is_confirmed" не существует
+LOG: 2025/07/02 12:55:29.207067 Completed POST /user/autho
+LOG: 2025/07/02 12:56:02.592606 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 12:56:02.623359 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 12:56:03.843542 Started POST /user/autho
+LOG: 2025/07/02 12:56:03.887687 Completed POST /user/autho
+LOG: 2025/07/02 16:18:16.234233 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 16:18:16.266072 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 16:18:18.393578 Started POST /user/autho
+LOG: 2025/07/02 16:18:18.456105 Completed POST /user/autho
+LOG: 2025/07/02 19:22:19.887446 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 19:22:20.022687 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 19:23:44.811555 Started POST /user/autho
+LOG: 2025/07/02 19:23:44.859935 Invalid password
+LOG: 2025/07/02 19:23:44.859935 Completed POST /user/autho
+LOG: 2025/07/02 19:23:51.077597 Started POST /user/autho
+LOG: 2025/07/02 19:23:51.120931 Completed POST /user/autho
+LOG: 2025/07/02 19:25:44.761497 Started POST /user/change-info
+LOG: 2025/07/02 19:25:44.761497 Not allowed method: POST
+LOG: 2025/07/02 19:25:44.761497 Completed POST /user/change-info
+LOG: 2025/07/02 19:25:51.545254 Started PATCH /user/change-info
+LOG: 2025/07/02 19:25:51.545254 Can't parse token: token signature is invalid: key is of invalid type: HMAC verify expects []byte
+LOG: 2025/07/02 19:25:51.545254 Completed PATCH /user/change-info
+LOG: 2025/07/02 19:33:49.561249 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 19:33:49.590565 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 19:33:51.904648 Started PATCH /user/change-info
+LOG: 2025/07/02 19:33:51.904648 Всё хайп: 113
+LOG: 2025/07/02 19:33:51.904648 Completed PATCH /user/change-info
+LOG: 2025/07/02 19:43:41.425207 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/02 19:43:41.453722 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/02 19:44:03.231124 Started POST /user/reg/confirm-email/new-code
+LOG: 2025/07/02 19:44:05.130028 popkipiskisashalox
+LOG: 2025/07/02 19:44:05.130028 Send confirm message to email golovlev-2005@mail.ru
+LOG: 2025/07/02 19:44:05.130028 Completed POST /user/reg/confirm-email/new-code
+LOG: 2025/07/03 00:00:51.765503 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 00:00:51.910849 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 00:01:56.094801 Started PATCH /user/change-info
+LOG: 2025/07/03 00:01:56.097626 succesful change info for user: 113
+LOG: 2025/07/03 00:01:56.097626 Completed PATCH /user/change-info
+LOG: 2025/07/03 00:02:06.691270 Started PATCH /user/change-info
+LOG: 2025/07/03 00:02:06.691270 Can't parse token: token signature is invalid: signature is invalid
+LOG: 2025/07/03 00:02:06.691270 Completed PATCH /user/change-info
+LOG: 2025/07/03 00:02:12.727461 Started PATCH /user/change-info
+LOG: 2025/07/03 00:02:12.728085 succesful change info for user: 113
+LOG: 2025/07/03 00:02:12.728085 Completed PATCH /user/change-info
+LOG: 2025/07/03 00:02:21.693577 Started PATCH /user/change-info
+LOG: 2025/07/03 00:02:21.694195 succesful change info for user: 113
+LOG: 2025/07/03 00:02:21.694195 Completed PATCH /user/change-info
+LOG: 2025/07/03 00:02:35.197086 Started PATCH /user/change-info
+LOG: 2025/07/03 00:02:35.197086 Can't parse token: token is malformed: could not JSON decode header: invalid character 'È' looking for beginning of value
+LOG: 2025/07/03 00:02:35.197086 Completed PATCH /user/change-info
+LOG: 2025/07/03 00:02:44.032335 Started PATCH /user/change-info
+LOG: 2025/07/03 00:02:44.032335 Can't parse token: token is malformed: could not JSON decode header: invalid character '\u008b' looking for beginning of value
+LOG: 2025/07/03 00:02:44.032335 Completed PATCH /user/change-info
+LOG: 2025/07/03 00:02:54.939775 Started PATCH /user/change-info
+LOG: 2025/07/03 00:02:54.940357 succesful change info for user: 113
+LOG: 2025/07/03 00:02:54.940357 Completed PATCH /user/change-info

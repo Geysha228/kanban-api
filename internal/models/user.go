@@ -23,6 +23,7 @@ type UserConfirm struct {
 type UserAutho struct {
 	LoginEmail string `json:"login_email" validate:"required,min=4,max=30"`
 	Password string `json:"password" validate:"required,min=8,max=20,alphanum"`
+	RememberUser bool `json:"remember_user"`
 }
 
 type UserOnlyLoginEmail struct{
@@ -40,5 +41,13 @@ type UserResetPassword struct{
 	Email                 string `json:"email" validate:"required,min=4,max=30,email"`
 	Password string `json:"password" validate:"required,min=8,max=20,alphanum"`
 	EmailConfirmationCode           string `json:"email_confirmation_code" validate:"omitempty,len=6"`
+}
+
+type UserChange struct {
+	ID                              int    `json:"id"`
+	FirstName                       string `json:"first_name" validate:"required,min=2,max=25"`
+	LastName                        string `json:"last_name" validate:"required,min=2,max=25"`
+	Patronymic                      string `json:"patronymic" validate:"omitempty,min=2,max=25"`
+	Position                        string `json:"position" validate:"omitempty,min=2,max=50"`
 }
 
