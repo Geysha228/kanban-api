@@ -16,6 +16,13 @@ func IsNullStringDb(str string) sql.NullString {
 	return res
 }
 
+func IsNullStringFromDB(str sql.NullString) (res string) {
+	if str.Valid {
+		return str.String
+	}
+	return ""
+}
+
 func HashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	return string(bytes), err 

@@ -703,3 +703,62 @@ LOG: 2025/07/03 00:02:44.032335 Completed PATCH /user/change-info
 LOG: 2025/07/03 00:02:54.939775 Started PATCH /user/change-info
 LOG: 2025/07/03 00:02:54.940357 succesful change info for user: 113
 LOG: 2025/07/03 00:02:54.940357 Completed PATCH /user/change-info
+LOG: 2025/07/03 12:10:53.657489 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:10:53.691027 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:10:54.794835 Started PATCH /user/profile
+LOG: 2025/07/03 12:10:54.794835 Not allowed method: PATCH
+LOG: 2025/07/03 12:10:54.794835 Completed PATCH /user/profile
+LOG: 2025/07/03 12:11:01.649254 Started GET /user/profile
+LOG: 2025/07/03 12:11:01.649759 Bad request to DB: pq: столбец "login" не существует
+LOG: 2025/07/03 12:11:01.649759 Completed GET /user/profile
+LOG: 2025/07/03 12:11:56.141042 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:11:56.169230 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:11:59.106555 Started GET /user/profile
+LOG: 2025/07/03 12:11:59.107703 Bad request to DB: pq: столбец "login" не существует
+LOG: 2025/07/03 12:11:59.107703 Completed GET /user/profile
+LOG: 2025/07/03 12:12:18.152945 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:12:18.182207 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:12:19.558491 Started GET /user/profile
+LOG: 2025/07/03 12:12:19.559846 Bad request to DB: pq: столбец "login" не существует
+LOG: 2025/07/03 12:12:19.559846 Completed GET /user/profile
+LOG: 2025/07/03 12:13:02.325260 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:13:02.354638 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:13:04.006278 Started GET /user/profile
+LOG: 2025/07/03 12:13:04.007634 Bad request to DB: pq: столбец "paatronymic" не существует
+LOG: 2025/07/03 12:13:04.007634 Completed GET /user/profile
+LOG: 2025/07/03 12:13:39.912223 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:13:39.945377 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:13:41.414763 Started GET /user/profile
+LOG: 2025/07/03 12:13:41.415560 Completed GET /user/profile
+LOG: 2025/07/03 12:14:11.903055 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:14:11.930792 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:14:13.205525 Started GET /user/profile
+LOG: 2025/07/03 12:14:13.206427 Completed GET /user/profile
+LOG: 2025/07/03 12:14:39.739770 Started PATCH /user/profile/change-info
+LOG: 2025/07/03 12:14:39.744785 succesful change info for user: 113
+LOG: 2025/07/03 12:14:39.744785 Completed PATCH /user/profile/change-info
+LOG: 2025/07/03 12:14:42.679536 Started GET /user/profile
+LOG: 2025/07/03 12:14:42.679536 Completed GET /user/profile
+LOG: 2025/07/03 12:16:06.112706 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:16:06.141453 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:16:09.170111 Started GET /user/profile
+LOG: 2025/07/03 12:16:09.170960 Completed GET /user/profile
+LOG: 2025/07/03 12:16:42.194923 Started PATCH /user/profile/change-info
+LOG: 2025/07/03 12:16:42.196251 succesful change info for user: 113
+LOG: 2025/07/03 12:16:42.196251 Completed PATCH /user/profile/change-info
+LOG: 2025/07/03 12:16:45.257557 Started GET /user/profile
+LOG: 2025/07/03 12:16:45.258062 Bad request to DB: sql: Scan error on column index 3, name "patronymic": converting NULL to string is unsupported
+LOG: 2025/07/03 12:16:45.258062 Completed GET /user/profile
+LOG: 2025/07/03 12:18:27.268708 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:18:27.298385 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:18:29.796381 Started GET /user/profile
+LOG: 2025/07/03 12:18:29.797284 Completed GET /user/profile
+LOG: 2025/07/03 12:28:39.864931 Succesful connect to database: 26.94.236.113:9000
+LOG: 2025/07/03 12:28:39.893259 Succesful ping database: 26.94.236.113:9000
+LOG: 2025/07/03 12:28:44.110658 Started GET /user/profile
+LOG: 2025/07/03 12:28:44.111489 Completed GET /user/profile
+LOG: 2025/07/03 12:28:58.448691 Started PATCH /user/profile/change-info
+LOG: 2025/07/03 12:28:58.452027 succesful change info for user: 113
+LOG: 2025/07/03 12:28:58.452027 Completed PATCH /user/profile/change-info
+LOG: 2025/07/03 12:29:01.722713 Started GET /user/profile
+LOG: 2025/07/03 12:29:01.722713 Completed GET /user/profile

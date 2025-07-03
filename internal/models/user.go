@@ -1,6 +1,8 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 type User struct {
 	ID                              int    `json:"id"`
@@ -50,4 +52,15 @@ type UserChange struct {
 	Patronymic                      string `json:"patronymic" validate:"omitempty,min=2,max=25"`
 	Position                        string `json:"position" validate:"omitempty,min=2,max=50"`
 }
+
+type UserInfo struct {
+	Login                           string `json:"login" validate:"required,min=6,max=20"`
+	FirstName                       string `json:"first_name" validate:"required,min=2,max=25"`
+	LastName                        string `json:"last_name" validate:"required,min=2,max=25"`
+	Patronymic                      string `json:"patronymic" validate:"omitempty,min=2,max=25"`
+	Position                        string `json:"position" validate:"omitempty,min=2,max=50"`
+	Email                           string `json:"email" validate:"required,min=4,max=30,email"`
+}
+
+
 

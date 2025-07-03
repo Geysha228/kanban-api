@@ -25,6 +25,7 @@ type UsRepo interface{
 	CheckConfirmationEmailPasswordCode(user models.UserConfirm) (bool,error)
 	GetConfirmedAndIdUser(user models.UserAutho) (userID int,result bool, err error)
 	ChangeUserinfo(user models.UserChange) (result bool, err error)
+	GetUserInfo(userID int) (user models.UserInfo, err error)
 }
 
 type UserRepository struct {
@@ -228,7 +229,7 @@ func (usRepo *UserRepository) ChangeUserinfo(user models.UserChange) (result boo
 				patronymic = $3,
 				position = $4
 				WHERE id = $5`
-	res, err := usRepo.db.Exec(query, user.FirstName, user.LastName, user.Patronymic, user.Position, user.ID)
+	res, err := usRepo.db.Exec(query, user.FirstName, user.LastName, util.IsNullStringDb(user.Patronymic), util.IsNullStringDb(user.Position), user.ID)
 	if err != nil {
 		return false, err
 	}
@@ -240,4 +241,24 @@ func (usRepo *UserRepository) ChangeUserinfo(user models.UserChange) (result boo
 		return false, nil
 	}
 	return true, nil
+}
+
+func (usRepo *UserRepository) GetUserInfo(userID int) (user models.UserInfo, err error){
+	query := `SELECT login, first_name,
+				last_name, patronymic,
+				"position", email
+				FROM "User"
+				WHERE id = $1`
+	var (
+		patronymic sql.NullString
+		position sql.NullString
+	)
+	err = usRepo.db.QueryRow(query, userID).Scan(&user.Login, &user.FirstName, &user.LastName, &patronymic, &position, &user.Email)
+	if err != nil {
+		return user, err
+	}
+	user.Patronymic = util.IsNullStringFromDB(patronymic)
+	user.Position = util.IsNullStringFromDB(position)
+
+	return user, nil
 }

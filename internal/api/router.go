@@ -13,6 +13,9 @@ func SetupRouter() http.Handler{
 	
 	mux := http.NewServeMux()
 
+
+	//РЕГИСТРАЦИЯ
+
 	//регистрация
 	mux.Handle("/user/reg", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, RegisterHandler(userRepo)))))
 
@@ -21,6 +24,10 @@ func SetupRouter() http.Handler{
 	
 	//отправка нового кода подтверждения пользователя
 	mux.Handle("/user/reg/confirm-email/new-code", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, SendNewConfirmationCodeHandler(userRepo)))))
+
+
+
+	//АВТОРИЗАЦИЯ
 
 	//отправка кода для сброса пароля
 	mux.Handle("/user/autho/forgot-password", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, SendNewConfirmationPasswordCodeHandler(userRepo)))))
@@ -34,7 +41,14 @@ func SetupRouter() http.Handler{
 	//авторизация
 	mux.Handle("/user/autho", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPost, AuthorizationUserHandler(userRepo)))))
 	
+
+
+	//ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ
+
 	//изменение данных пользователя
-	mux.Handle("/user/change-info", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPatch, ChangeUserInfoHandler(userRepo)))))
+	mux.Handle("/user/profile/change-info", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodPatch, ChangeUserInfoHandler(userRepo)))))
+	
+	//получение данных пользователя о себе
+	mux.Handle("/user/profile", CORSMiddleware(LoggerMiddleware(MethodCheckMiddleware(http.MethodGet, GetInfoAboutUser(userRepo)))))
 	return mux
 }

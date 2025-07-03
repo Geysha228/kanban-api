@@ -112,3 +112,9 @@ func GetTokenFromRequest(r *http.Request) (string, error) {
     tokenString := parts[1]
     return tokenString, nil
 }
+
+func WriteJSON(w http.ResponseWriter, status int, data interface{}) error {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(status)
+    return json.NewEncoder(w).Encode(data)
+}

@@ -726,3 +726,65 @@ func ChangeUserInfoHandler(repo repository.UsRepo) http.HandlerFunc{
 		w.WriteHeader(http.StatusOK)
 	}
 }
+
+func GetInfoAboutUser(repo repository.UsRepo) http.HandlerFunc{
+	return func(w http.ResponseWriter, r *http.Request) {
+				//получение токена из запроса
+		tokenString, err := util.GetTokenFromRequest(r)
+		if err != nil{
+			util.LogWrite(fmt.Sprintf("Can't read token: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			errors := []models.APIError{{Error: "Can't read token", ErrorCode: "0081"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		var user models.UserInfo
+		//парс токена
+		userID, err := util.ParseJWT(tokenString)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Can't parse token: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			errors := []models.APIError{{Error: "Can't parse token", ErrorCode: "0090"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return
+		}
+
+		user, err = repo.GetUserInfo(userID)
+		if err != nil {
+			util.LogWrite(fmt.Sprintf("Bad request to DB: %v", err))
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusInternalServerError)
+			errors := []models.APIError{{Error: "Bad work DB", ErrorCode: "0121"},}
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return				
+		}
+		if user.Email == "" {
+			util.LogWrite("No one row not find")
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "No one row not find", ErrorCode: "1290"},}
+			w.WriteHeader(http.StatusBadRequest)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return			
+		}
+
+		err = util.WriteJSON(w, http.StatusOK, user)
+		if err != nil {
+			util.LogWrite("Can't send data")
+			w.Header().Set("Content-Type", "application/json")
+			errors := []models.APIError{{Error: "Can't send data", ErrorCode: "8510"},}
+			w.WriteHeader(http.StatusInternalServerError)
+			response := models.ErrorResponse{Errors: errors,}
+			json.NewEncoder(w).Encode(response)
+			return		
+		}
+	}
+}
+
+
